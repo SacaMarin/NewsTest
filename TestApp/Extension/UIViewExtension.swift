@@ -12,6 +12,7 @@ import SwifterSwift
 extension UIView {
     
     func roundCorners(corners: UIRectCorner, radius: CGFloat) {
+        let bounds =  CGRect(x: frame.origin.x, y: frame.origin.y, width: UIScreen.main.bounds.width, height: frame.height)
         let path = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
         let mask = CAShapeLayer()
         mask.path = path.cgPath
@@ -24,21 +25,6 @@ extension UIView {
         layer.shadowOpacity = 1
         layer.shadowColor = UIColor.gray.cgColor
         layer.shadowOffset = CGSize(width: 0 , height:2)
-    }
-    
-    func addShadow(shadowColor: UIColor, offSet: CGSize, opacity: Float, shadowRadius: CGFloat, cornerRadius: CGFloat, corners: UIRectCorner, fillColor: UIColor = .white) {
-        let shadowLayer = CAShapeLayer()
-        let size = CGSize(width: cornerRadius, height: cornerRadius)
-        let cgPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: corners, cornerRadii: size).cgPath //1
-        shadowLayer.path = cgPath //2
-        shadowLayer.fillColor = fillColor.cgColor //3
-        shadowLayer.shadowColor = shadowColor.cgColor //4
-        shadowLayer.shadowPath = cgPath
-        shadowLayer.shadowOffset = offSet //5
-        shadowLayer.shadowOpacity = opacity
-        shadowLayer.shadowRadius = shadowRadius
-        
-        self.layer.addSublayer(shadowLayer)
     }
     
 }

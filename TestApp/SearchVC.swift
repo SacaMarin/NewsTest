@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchVC: UIViewController {
-   
+    
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var cornerView: UIView!
     @IBOutlet weak var filterBtn: UIButton!
@@ -23,10 +24,12 @@ class SearchVC: UIViewController {
     
     let viewModel = SearchVM()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchArticlesBy(with: "", with: "")
+        StyleSheets.apply(for: self)
+        getHystoryDB()
     }
     
     func searchArticlesBy(with fromDate: String, with toDate: String) {
@@ -38,10 +41,6 @@ class SearchVC: UIViewController {
                 }
             }
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        StyleSheets.apply(for: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -79,6 +78,49 @@ class SearchVC: UIViewController {
     fileprivate func showSelectedArticle(with indexRow: Int) {
         viewModel.selectArticleForRow(for: indexRow)
         performSegue(withIdentifier: R.segue.searchVC.showNewsAction, sender: self)
+    }
+    
+    private func saveSearchedTitles(with title: String) {
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Hystory", in: context)
+        let newTitle = NSManagedObject(entity: entity!, insertInto: context)
+        
+        newTitle.setValue(title, forKey: "title")
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed saving")
+        }
+        
+        
+        getHystoryDB()
+    }
+    
+    func getHystoryDB() {
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Hystory")
+        //request.predicate = NSPredicate(format: "age = %@", "12")
+        request.returnsObjectsAsFaults = false
+        
+        do {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let result = try context.fetch(request)
+            Config.searchHystory.removeAll()
+            
+            for data in result as! [NSManagedObject] {
+                Config.searchHystory.append(data.value(forKey: "title") as! String)
+            }
+            
+            self.tableView.reloadData()
+            self.titleSearchTop.text = self.viewModel.getCountArticles() != 0 ? "\(self.viewModel.getResultCountArticles()) news" : "Search History"
+            
+        } catch {
+            print("Failed")
+        }
+        
     }
 }
 
@@ -132,7 +174,7 @@ extension SearchVC: UISearchBarDelegate {
             return
         }
         
-        Config.searchHystory.append(searchText)
+        self.saveSearchedTitles(with: searchText)
         self.searchBar.endEditing(true)
         self.viewModel.setSearchWord(with: searchText)
         self.searchArticlesBy(with: "", with: "")

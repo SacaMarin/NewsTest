@@ -22,11 +22,8 @@ class ArticleVC: UIViewController, WKNavigationDelegate {
         setupViews()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        StyleSheets.apply(for: self)
-    }
-    
     func setupViews() {
+        StyleSheets.apply(for: self)
         articleWebView.navigationDelegate = self
         
         guard let url = URL(string: viewModel.getSelectedArticle()?.url) else { return }

@@ -18,13 +18,10 @@ class NewsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        setupViews()
         getArticles()
         // Do any additional setup after loading the view.
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        setupViews()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

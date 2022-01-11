@@ -13,6 +13,7 @@
 		A859198127450CBA00FAEA61 /* NewsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859198027450CBA00FAEA61 /* NewsVM.swift */; };
 		A859198327452F6F00FAEA61 /* ArticleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A859198227452F6F00FAEA61 /* ArticleVC.swift */; };
 		A85919852745318400FAEA61 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85919842745318400FAEA61 /* R.generated.swift */; };
+		A85B6C62278D91C700B1C986 /* HystoryModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A85B6C60278D91C700B1C986 /* HystoryModel.xcdatamodeld */; };
 		A88703A42743E901006344AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88703A32743E901006344AB /* AppDelegate.swift */; };
 		A88703A82743E901006344AB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A88703A72743E901006344AB /* ViewController.swift */; };
 		A88703AB2743E901006344AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A88703A92743E901006344AB /* Main.storyboard */; };
@@ -45,6 +46,7 @@
 		A859198027450CBA00FAEA61 /* NewsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsVM.swift; sourceTree = "<group>"; };
 		A859198227452F6F00FAEA61 /* ArticleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleVC.swift; sourceTree = "<group>"; };
 		A85919842745318400FAEA61 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		A85B6C61278D91C700B1C986 /* HystoryModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HystoryModel.xcdatamodel; sourceTree = "<group>"; };
 		A88703A02743E901006344AB /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A88703A32743E901006344AB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A88703A72743E901006344AB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 				A8C494F22744108B0023E5AF /* Extension */,
 				A8C494F027440CF00023E5AF /* StyleSheets.swift */,
 				A88703A32743E901006344AB /* AppDelegate.swift */,
+				A85B6C60278D91C700B1C986 /* HystoryModel.xcdatamodeld */,
 				A859197A2744791000FAEA61 /* SceneDelegate.swift */,
 				A88703A72743E901006344AB /* ViewController.swift */,
 				A88703A92743E901006344AB /* Main.storyboard */,
@@ -369,6 +372,7 @@
 				A85919852745318400FAEA61 /* R.generated.swift in Sources */,
 				A859197B2744791000FAEA61 /* SceneDelegate.swift in Sources */,
 				A859198327452F6F00FAEA61 /* ArticleVC.swift in Sources */,
+				A85B6C62278D91C700B1C986 /* HystoryModel.xcdatamodeld in Sources */,
 				A8C494FB274411150023E5AF /* NewsVC.swift in Sources */,
 				A88703A42743E901006344AB /* AppDelegate.swift in Sources */,
 				A8B8DCCC2745D8E000AF5E47 /* Protocol.swift in Sources */,
@@ -611,6 +615,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A85B6C60278D91C700B1C986 /* HystoryModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A85B6C61278D91C700B1C986 /* HystoryModel.xcdatamodel */,
+			);
+			currentVersion = A85B6C61278D91C700B1C986 /* HystoryModel.xcdatamodel */;
+			path = HystoryModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A88703982743E901006344AB /* Project object */;
 }
